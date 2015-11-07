@@ -2,35 +2,71 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" data-ng-app="appShop">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-    <environment names="Staging,Production">
-        <script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
-                asp-fallback-src="bower_components/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery">
-        </script>
-        <script src="//ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/bootstrap.min.js"
-                asp-fallback-src="bower_components/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-        </script>
-        <script src="//ajax.aspnetcdn.com/ajax/hammer.js/2.0.4/hammer.min.js"
-                asp-fallback-src="bower_components/hammer.js/hammer.js"
-                asp-fallback-test="window.Hammer">
-        </script>
-        <script src="//ajax.aspnetcdn.com/ajax/bootstrap-touch-carousel/0.8.0/js/bootstrap-touch-carousel.js"
-                asp-fallback-src="~/bower_components/bootstrap-touch-carousel/dist/js/bootstrap-touch-carousel.js"
-                asp-fallback-test="window.Hammer && window.Hammer.Instance">
-        </script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"
-                asp-fallback-src="bower_components/angular/angular.min.js"
-                asp-fallback-test="window.angular">
-        </script>
-        <script src="app/app.js" asp-file-version="true"></script>
-    </environment>
+    <title>Shop</title>
+    <link rel="stylesheet" type="text/css" media="all" href="content/css/style.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
 </head>
-<body ng-app="AppShop">
-    {{2+2}}
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="btn btn-success navbar-toggle" data-ng-click="navbarExpanded = !navbarExpanded">
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                </button>
+                <a class="navbar-brand" href="#/">Home</a>
+            </div>
+            <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
+                <ul class="nav navbar-nav navbar-right">
+                    <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}}</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="#/orders">My Orders</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="#/refresh">Refresh Token</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
+                    <li data-ng-hide="authentication.isAuth"><a href="#/login">Login</a></li>
+                    <li data-ng-hide="authentication.isAuth"><a href="#/signup">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron">
+        <div class="container">
+            <div class="page-header text-center">
+                <h1>AngularJS Authentication</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div data-ng-view="">
+        </div>
+    </div>
+
+    <hr />
+
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-muted">Created by Taiseer Joudeh. Twitter: <a target="_blank" href="http://twitter.com/tjoudeh">@tjoudeh</a></p>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-muted">Dev CarlosX</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/hammer.js/hammer.js"></script>
+    <script src="bower_components/bootstrap-touch-carousel/dist/js/bootstrap-touch-carousel.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+
+    <script src="app/app.js?v2"></script>
+    <script src="app/controllers/home.js"></script>
+    <script src="app/controllers/login.js"></script>
 </body>
 </html>
