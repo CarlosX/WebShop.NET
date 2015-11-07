@@ -64,6 +64,7 @@
     <script src="bower_components/bootstrap-touch-carousel/dist/js/bootstrap-touch-carousel.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
 
     <script src="app/app.js?v2"></script>
     <script src="app/controllers/home.js"></script>

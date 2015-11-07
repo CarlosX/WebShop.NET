@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-var app = angular.module('appShop', ['ngRoute']);
+var app = angular.module('appShop', ['ngRoute', 'LocalStorageModule']);
 
 app.config(function ($routeProvider) {
 
